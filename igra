@@ -1,0 +1,462 @@
+#include <fstream>
+#include <string>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+int chetchik_pobed = 0;
+int popitki = 0;
+int bis;
+int mm = 0;
+int prr = 1;
+int adm = 0;
+void trupik(int povesilsa) {
+
+    switch (povesilsa) {
+    case 1:
+        cout << "        $$$$$$$$$$$$$$$\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << "                      $\n"
+            << " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n"
+            << " $                          $\n";
+        cout << "Осталось 5 попыток!" << endl;
+        break;
+    case 2:
+
+        cout << "        $$$$$$$$$$$$$$$\n"
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n" <<
+            " $                          $\n";
+        cout << "Осталось 4 попытки!" << endl;
+        break;
+    case 3:
+        cout << "        $$$$$$$$$$$$$$$\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        O             $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n" <<
+            " $                          $\n";
+        cout << "Осталось 3 попытки!" << endl;
+        break;
+    case 4:
+        cout << "        $$$$$$$$$$$$$$$\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        O             $\n" <<
+            "      /   \\           $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n" <<
+            " $                          $\n";
+        cout << "Осталось 2 попытки!" << endl;
+        break;
+    case 5:
+        cout << "        $$$$$$$$$$$$$$$\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        O             $\n" <<
+            "      / | \\           $\n" <<
+            "        |             $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n" <<
+            " $                          $\n";
+        cout << "Осталось 1 попытка!" << endl;
+        break;
+    case 6:
+        cout << "        $$$$$$$$$$$$$$$\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        O             $\n" <<
+            "      / | \\           $\n" <<
+            "        |             $\n" <<
+            "       / \\            $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n" <<
+            " $                          $\n";
+        cout << "Вы проиграли" << endl;
+        break;
+
+
+
+
+    }
+}
+
+void igra()
+{
+    system("color 7D");
+    ifstream in("F:\\holper\\VOPROS.txt");//путь к файлу
+    
+    int oo = 1;
+    int chetcik = 0;
+    while (oo == 1)
+    {
+
+        if (in.is_open()) {
+            int randk = rand() % 39 + 1;//рандомно выбор слово
+            char mass[10] = { '*','*', '*', '*', '*','*', '*', '*', '*', '*' };//масив для для букв которые были
+
+            int k = 0;//переменная для проверки первый ли запуск
+            int buffc = 0;//переменная для количество для массива
+            char buff = '*';//буферная переменная
+            string line;
+            for (int i = 0; i < randk; i++) {//какую строку будет брать
+                getline(in, line);
+            }
+            int chhh = 0;
+            char* slovo = new char[line.size()];//достаем слово из файла
+            for (int i = 0; i < line.size(); i++) {
+                slovo[i] = line[i];
+                chhh++;
+            }
+            
+            char* slovou = new char[line.size()];//заполняем страку символом _
+            for (int g = 0; g < line.size(); g++) {
+                slovou[g] = '_';
+            }
+            int umer = 0;//сколько раз ты проиграл и для человечка
+            chetchik_pobed = 0;//щетчик побед
+            for (int i = 1; i == 1;) {
+
+                int c = 0;
+                if (chetchik_pobed == chhh)//проверка победил ли ты
+                {
+                    break;
+                }
+                cout << "Введите букву:" << endl;//ввод буквы
+                char vvod;//буква
+                cin >> vvod;
+                if (k > 0)//код который работает постоянно кроме первого запуска
+                {
+                    mass[buffc] = buff;//запись в масив которые были слова
+                    buff = vvod;//запись буквы в буферную пер
+                    buffc++;//счетчик букв для массива
+                }
+                if (k == 0)//код для первого запуска
+                {
+                    k++;//при первом запуске меняет его чтобы этот код не работал больше 1 раза
+                    buffc++;//счетчик для массива
+                    buff = vvod;//буква
+
+
+                }
+                for (int hh = 0; hh <= buffc; hh++)//проверка совпадают ли буквы с прошлыми
+                {
+                    if (mass[hh] == vvod)
+                    {
+                        c = 1;//переменная если есть повтор
+                    }
+                }
+
+
+
+                if (c >= 1) {//если такая буква была
+                    cout << "Такая буква уже была! Напишите новую букву!" << endl;
+
+                }
+                int h = 0;//переменная для угадание
+
+
+                if (c == 0)//чтобы если она была код не работал
+                {
+
+                    for (int c = 0; c < line.size() + 1; c++) {
+                        int u = 0;
+                        if (vvod == slovo[c]) {
+                            slovou[c] = slovo[c];//в слово вставляется буква с индексом 
+                            chetchik_pobed++;//сколько угадал букв
+                            h--;//щетчик угадал ли букву
+                        }
+
+                    }
+
+                    /*for (int g = 0; g < line.size(); g++) {//заметка
+                        cout << slovou[g];
+
+                    }*/
+                    cout << endl;
+                    if (h == 0) {//если не угадал работает вот это
+                        umer++;
+                        system("cls");
+                        trupik(umer);//вызов человечка с кол ошибак
+                        popitki++;//попытки
+                        cout << "Буквы который вы использовали уже: ";
+                        for (int hh = 0; hh <= buffc; hh++)//проверка совпадают ли буквы с прошлыми
+                        {
+                            cout << mass[hh];// вывод букв которых ты вводил
+
+                        }
+                        cout << endl;
+                        cout << "буквы которые ты угадал:";
+                        for (int g = 0; g < line.size(); g++) {
+                            cout << slovou[g];//вывод букв которые ты угадал
+
+                        }
+                        cout << endl << "Вы не угадали букву!" << endl;
+                    }
+                    else if (h != 0) {//если  угадал работает вот это
+
+                        system("cls");
+                        cout << "Буквы который вы использовали уже: ";
+                        for (int hh = 0; hh <= buffc; hh++)//проверка совпадают ли буквы с прошлыми
+                        {
+                            cout << mass[hh];// вывод букв которых ты вводил
+
+                        }
+                        cout << endl;
+                        cout << "буквы которые ты угадал:";
+                        for (int g = 0; g < line.size(); g++) {//вывод букв которые ты угадал
+                            cout << slovou[g];
+
+                        }
+                        cout << endl << "Вы угадали букву! Давайте дальше!" << endl;
+                    }
+                    cout << endl;
+                    if (umer == 6) {//сработает если уже были 6 ошибок
+                        i = 0;
+                        cout << "Это было слово: ";
+                        for (int g = 0; g < line.size(); g++) {//вывод которое слово было загаданно
+                            cout << slovo[g];//вывод
+
+                        }
+                        cout << endl;
+                    }
+                }
+                if (c >= 1)//если была повторяющщая буква
+                    c = 0;//чтобы следующий раз когда запустилось функция она работала
+            }
+            if (chetchik_pobed == chhh) {//проверка ты победил?
+                chetcik++;
+                cout << "Ты победил!!! Молодецц!!" << endl;
+                if (popitki == 0)
+                {
+                    cout << "Молодец ты справился без единой ошибки!" << endl;
+                }
+                else//Если ты ошибся
+                {
+                    cout << "Ты ошибился " << popitki << "раз(а)" << endl;
+                }
+
+            }
+            cout << "Хочешь продолжить игру?" << endl;//конец, продолжение игры
+            cout << "Если да то напиши 1 если нет то напиши 2" << endl;
+            cin >> oo;//переменная которая отвечает за цикл
+            if (oo == 2)//сколько раз победил игрок
+            {
+                if (adm == 0)
+                {
+                    ofstream fout("F:\\holper\\Names.txt", ios::app);
+                    fout << " Win: " << chetcik << endl << "--------------------------------------------------" << endl; // запись строки в файл
+                    fout.close(); // закрываем файл
+                    system("cls");
+
+                }
+
+            }
+
+            popitki = 0;//попытки равны 0
+        }
+
+
+    }
+    in.close();//закрывает txt
+
+}
+
+class userr
+{
+public:
+    string name;
+    int chet;
+
+    userr()
+    {
+        system("cls");
+        cout << "Введите свое имя" << endl;
+        cin >> name;
+        chet = 0;
+    }
+
+    void vosh()
+    {
+
+        ofstream fout("F:\\holper\\Names.txt", ios::app);
+        fout << "Name: " << name << endl; // запись строки в файл
+        // // закрываем файл
+        system("cls");
+        adm = 0;
+        igra();
+        prr = 2;
+    }
+    //friend adminn;
+};
+void razmin() //::userr
+{
+    system("cls");
+    string line;
+    ifstream in("F:\\holper\\Names.txt");
+    cout << "Счет людей которые играли в игру : " << endl;
+    if (in.is_open())
+    {
+        while (getline(in, line))
+        {
+            cout << line << endl;
+        }
+    }
+    cout << endl;
+    cout << "Если нечего не вывелось то в игру еще не кто не играл.!!!!!" << endl;
+    in.close();
+}
+
+class adminn
+{
+public:
+    friend void razmin();
+    adminn()
+    {
+
+
+    }
+
+    void menil()
+    {
+        system("color 4");
+        while (mm == 0) {
+            int rain = 0;
+            cout << "Вы вошли как администратор" << endl;
+            cout << "Что хотите сделать?" << endl;
+            cout << "1-Удалить счета пользователей которые играли в игру" << endl;
+            cout << "2-Начать тэстить игру" << endl;
+            cout << "3-посмотреть всех пользователей которые поиграли в игру" << endl;
+            cout << "4-Выйти из аккаунта админа." << endl;
+            cin >> rain;
+            switch (rain)
+            {
+            case 1:
+            {
+                system("cls");
+                ofstream("F:\\holper\\Names.txt", std::ofstream::trunc);
+                cout << "Очистка прошла успешно!!!!" << endl;
+                break;
+            }
+
+            case 2:
+            {
+                system("cls");
+                adm = 1;
+                igra();
+                break;
+            }
+            case 3:
+            {
+                razmin();
+                break;
+            }
+
+            case 4:
+            {
+                mm = 1;
+                break;
+            }
+
+            default:
+                cout << " Вы вели не правильный символ команды. ERRORR!!!" << endl;
+                break;
+            }
+        }
+    }
+};
+int main()
+{
+    setlocale(LC_ALL, "rus");
+    srand(time(NULL));
+    //login();
+    string sis;
+
+
+    while (prr == 1)
+    {
+        system("cls");
+        system("color 2");
+        cout << "        $$$$$$$$$$$$$$$\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        |             $\n" <<
+            "        O             $\n" <<
+            "      / | \\           $\n" <<
+            "        |             $\n" <<
+            "       / \\            $\n" <<
+            "                      $\n" <<
+            "                      $\n" <<
+            " $$$$$$$$$$$$$$$$$$$$$$$$$$$$\n" <<
+            " $                          $\n";
+        cout << "Это моя игра Висильница" << endl;
+        cout << "Добро пожаловать приятель, вам не очень повезло если вы прешли играть в мою игру." << endl;
+        cout << "Если вы игрок напишите user если вы администратор то напишите admin" << endl;
+        //cout << "Введите свой код чтобы авторизоваться в систиме как администратор:" << enndl;
+        cin >> sis;
+        int pvv = 1;
+        if (sis == "admin")
+        {
+            system("cls");
+            adminn bbb;
+            bbb.menil();
+            pvv--;
+        }
+        else if (sis == "user")
+        {
+            system("cls");
+            userr abc;
+            abc.vosh();
+            pvv--;
+        }
+        if (pvv == 1)
+        {
+            cout << "ERORR ERORR ERORR, Введен не правильный логин!!!!!!!!!!!" << endl;
+        }
+        if (prr == 1)
+        {
+            cout << "Хотите продолжить напишите 1 если нет то 2" << endl;
+            cin >> prr;
+        }
+
+    }
+    //fout.close();
+    return 0;
+}
